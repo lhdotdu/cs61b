@@ -2,6 +2,21 @@
  *  @author YOUR NAME HERE
  */
 public class LeapYear {
+    /** Returns if the input year is leap year.
+     *  @param  year to be determined	
+	 */
+	public static boolean isLeapYear(int year) {
+		if (year%400 == 0) {
+            return true;
+        }
+        if (year%100 == 0) {
+            return false;
+        }
+        if (year%4 == 0) {
+            return true;
+        }
+        return false;
+	}
 
     /** Calls isLeapYear to print correct statement.
      *  @param  year to be analyzed
@@ -24,6 +39,11 @@ public class LeapYear {
             try {
                 int year = Integer.parseInt(args[i]);
                 checkLeapYear(year);
+                // if (checkLeapYear(year)) {
+                    // System.out.printf("%d is a leap year.\n", year);
+                // } else {
+                    // System.out.printf("%d is not a leap year.\n", year);
+                // }
             } catch (NumberFormatException e) {
                 System.out.printf("%s is not a valid number.\n", args[i]);
             }
