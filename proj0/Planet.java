@@ -7,8 +7,9 @@ public class Planet {
     public double mass;
     public String imgFileName;
     static final double G = 6.67e-11;
+    static final String imgFolder = "images/";
 
-    /** Constructor by specifing all variables. */
+    /** Constructor by specifying all variables. */
     public Planet(double xP, double yP, double xV,
                   double yV, double m, String img) {
         xxPos = xP;
@@ -37,7 +38,7 @@ public class Planet {
     	return Math.sqrt(d_x*d_x + d_y*d_y);
     }
 
-    /** Calculate the force exterted by an input planet on the current
+    /** Calculate the force exerted by an input planet on the current
     	planet. */
 	public double calcForceExertedBy(Planet p) {
 		double dist = calcDistance(p);
@@ -45,7 +46,7 @@ public class Planet {
 		return force;
 	}
 
-	/** Calculate the force exterted by an input planet in x direction
+	/** Calculate the force exerted by an input planet in x direction
 	*/
 	public double calcForceExertedByX(Planet p) {
 		double force = calcForceExertedBy(p);
@@ -55,7 +56,7 @@ public class Planet {
 		return force_x;
 	}
 
-	/** Calculate the force exterted by an input planet in y direction
+	/** Calculate the force exerted by an input planet in y direction
 	*/
 	public double calcForceExertedByY(Planet p) {
 		double force = calcForceExertedBy(p);
@@ -94,5 +95,10 @@ public class Planet {
 		yyVel += accel_y * dt;
 		xxPos += xxVel * dt;
 		yyPos += yyVel * dt;
+	}
+
+	/** Draw the planet at the canvas. */
+	public void draw() {
+		StdDraw.picture(xxPos, yyPos, imgFolder+imgFileName);
 	}
 }
