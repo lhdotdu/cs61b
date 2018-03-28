@@ -81,8 +81,27 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        // If A or B is null, return the other one.
+        // If both A and B are null, return null.
+        if (A == null) {
+            if (B == null) {
+                return null;
+            } else {
+                return B;
+            }
+        } else {
+            if (B == null) {
+                return A;
+            }
+        }
+        // Neither A nor B is null.
+        IntList res_A = A.rest;
+        // Find the last link of A
+        while (res_A.rest != null) {
+            res_A = res_A.rest;
+        }
+        res_A.rest = B;
+        return A;
     }
 
     /**
@@ -90,8 +109,35 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        // If A or B is null, return the other one.
+        // If both A and B are null, return null.
+        if (A == null) {
+            if (B == null) {
+                return null;
+            } else {
+                return B;
+            }
+        } else {
+            if (B == null) {
+                return A;
+            }
+        }
+        // Go through A and B. Store each value into res.
+        IntList ptr = A.rest;
+        IntList res = IntList.of(A.first);
+        IntList res_ptr = res;
+        while (ptr != null) {
+            res_ptr.rest = IntList.of(ptr.first);
+            ptr = ptr.rest;
+            res_ptr = res_ptr.rest;
+        }
+        ptr = B;
+        while (ptr != null) {
+            res_ptr.rest = IntList.of(ptr.first);
+            ptr = ptr.rest;
+            res_ptr = res_ptr.rest;
+        }
+        return res;
     }
 
 
